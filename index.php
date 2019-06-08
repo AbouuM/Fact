@@ -11,7 +11,7 @@ try
 	{
 		if($_GET['action'] == 'listPost')
 		{
-			listPost();
+			FrontendController::listPost();
 		}
 
 
@@ -20,7 +20,7 @@ try
 		{
 			if($_GET['id'] && $_GET['id'] > 0)
 			{
-				posts();
+				FrontendController::posts();
 			}
 
 			else
@@ -42,7 +42,7 @@ try
 					
 					if(!empty($_GET['id']) && !empty($trimmed_author) && !empty($trimmed_comment))
 					{
-						addComment($_GET['id'], $trimmed_author, $trimmed_comment);
+						FrontendController::addComment($_GET['id'], $trimmed_author, $trimmed_comment);
 					}
 
 					else
@@ -68,27 +68,27 @@ try
 
 		elseif($_GET['action'] == 'posts')
 		{
-			allposts();
+			FrontendController::allposts();
 		}
 
 		elseif($_GET['action'] == 'connect')
 		{
-			connect();
+			FrontendController::connect();
 		}
 
 		elseif($_GET['action'] == 'register')
 		{
-			register();
+			FrontendController::register();
 		}
 
 		elseif($_GET['action'] == 'contact')
 		{
-			contact();
+			FrontendController::contact();
 		}
 
 		elseif($_GET['action'] == 'about')
 		{
-			about();
+			FrontendController::about();
 		}
 
 
@@ -96,7 +96,7 @@ try
 		{
 			if(isset($_POST['alias'], $_POST['pass']))
 			{
-				login($_POST['alias'], $_POST['pass']);
+				BackendController::login($_POST['alias'], $_POST['pass']);
 			}
 
 			else
@@ -122,7 +122,7 @@ try
 
 				if(!empty($trimmed_name) && !empty($trimmed_fname) && !empty($trimmed_alias) && !empty($trimmed_birthday) && !empty($trimmed_email) && !empty($trimmed_pass) && !empty($trimmed_phone))
 				{
-					signup($trimmed_name, $trimmed_fname, $trimmed_alias, $trimmed_birthday, $trimmed_email, $trimmed_pass, $trimmed_phone);
+					BackendController::signup($trimmed_name, $trimmed_fname, $trimmed_alias, $trimmed_birthday, $trimmed_email, $trimmed_pass, $trimmed_phone);
 				}
 
 				else
@@ -141,7 +141,7 @@ try
 
 		elseif($_GET['action'] == 'write')
 		{
-			write();
+			BackendController::write();
 		}
 
 		elseif($_GET['action'] == 'addPost')
@@ -155,7 +155,7 @@ try
 
 				if(!empty($trimmed_alias) && !empty($trimmed_title) && !empty($trimmed_content) && !empty($trimmed_idUser))
 				{
-					addPost($trimmed_alias, $trimmed_title, $trimmed_content, $trimmed_idUser);
+					BackendController::addPost($trimmed_alias, $trimmed_title, $trimmed_content, $trimmed_idUser);
 				}
 
 				else
@@ -174,14 +174,14 @@ try
 
 		elseif($_GET['action'] == 'clickCv')
 		{
-			clickCv();
+			FrontendController::clickCv();
 		}
 
 		elseif($_GET['action'] == 'myPosts')
 		{
 			if($_GET['id'] && $_GET['id'] > 0)
 			{
-				MyPosts($_GET['id']);
+				FrontendController::MyPosts($_GET['id']);
 			}
 
 			else
@@ -194,7 +194,7 @@ try
 		{
 			if($_GET['id'] && $_GET['id'] > 0)
 			{
-				SelectPost();
+				FrontendController::SelectPost();
 			}
 
 			else
@@ -214,7 +214,7 @@ try
 
 				if(!empty($trimmed_title) && !empty($trimmed_content))
 				{
-					updatePost($trimmed_title, $trimmed_content, $_POST['postId'], $_POST['userId']);
+					FrontendController::updatePost($trimmed_title, $trimmed_content, $_POST['postId'], $_POST['userId']);
 				}
 				
 				else
@@ -233,7 +233,7 @@ try
 		{
 			if($_GET['id'] && $_GET['id'] > 0)
 			{
-				deletePost($_GET['id']);
+				FrontendController::deletePost($_GET['id']);
 			}
 
 			else
@@ -249,7 +249,7 @@ try
 
 		elseif($_GET['action'] == 'destroy')
 		{
-			destroy();
+			BackendController::destroy();
 		}
 
 
@@ -269,27 +269,27 @@ try
 	{
 		if($_GET['admin'] == 'adminHome')
 		{
-			home();
+			BackendController::home();
 		}
 
 		elseif($_GET['admin'] == 'usersList')
 		{
-			ListUser();
+			BackendController::ListUser();
 		}
 
 		elseif($_GET['admin'] == 'postslist')
 		{
-			postsList();
+			BackendController::postsList();
 		}
 
 		elseif($_GET['admin'] == 'commentslist') 
 		{
-			commentList();
+			BackendController::commentList();
 		}
 
 		elseif($_GET['admin'] == 'mailslist')
 		{
-			mailslist();
+			BackendController::mailslist();
 		}
 
 		elseif($_GET['admin'] == 'updateCommentStat')
@@ -298,7 +298,7 @@ try
 			{
 				if(isset($_POST['id'], $_POST['statut']))
 				{
-					updateStatut($_POST['id'], $_POST['statut']);
+					BackendController::updateStatut($_POST['id'], $_POST['statut']);
 				}
 
 				else
@@ -320,7 +320,7 @@ try
 			{
 				if(isset($_POST['id'], $_POST['statut']))
 				{
-					updateUser($_POST['id'], $_POST['statut']);
+					BackendController::updateUser($_POST['id'], $_POST['statut']);
 				}
 
 				else
@@ -339,7 +339,7 @@ try
 		{
 			if($_GET['id'] && $_GET['id'] > 0)
 			{
-				account();
+				BackendController::account();
 			}
 
 			else
@@ -353,7 +353,7 @@ try
 		{
 			if($_GET['id'] && $_GET['id'] > 0)
 			{
-				post();
+				BackendController::post();
 			}
 
 			else
@@ -374,7 +374,7 @@ try
 
 					if(!empty($trimmed_author) && !empty($trimmed_comment))
 					{
-						adminComment($_GET['id'], $trimmed_author, $trimmed_comment);
+						BackendController::adminComment($_GET['id'], $trimmed_author, $trimmed_comment);
 					}
 					
 					else
@@ -398,7 +398,7 @@ try
 		{
 			if($_GET['id'] && $_GET['id'] > 0)
 			{
-				selectComment();
+				BackendController::selectComment();
 			}
 			else
 			{
@@ -414,7 +414,7 @@ try
 
 				if(!empty($trimmed_comment))
 				{
-					updateComment($_POST['id'], $trimmed_comment, $_POST['postId']);
+					BackendController::updateComment($_POST['id'], $trimmed_comment, $_POST['postId']);
 				}
 				
 				else
@@ -440,7 +440,7 @@ try
 
 				if(!empty($trimmed_name) && !empty($trimmed_email) && !empty($trimmed_subject) && !empty($trimmed_message))
 				{
-					receiptMail($trimmed_name, $trimmed_email, $trimmed_subject, $trimmed_message);
+					BackendController::receiptMail($trimmed_name, $trimmed_email, $trimmed_subject, $trimmed_message);
 				}
 				
 				else
@@ -467,7 +467,7 @@ try
 
 	else
 	{
-		listPost();
+		FrontendController::listPost();
 	}
 }
 
