@@ -109,7 +109,7 @@
                 <h4>DEVELLOPEUR WEB</h4>
                 <h4>Bienvenue</h4>
                 <?php 
-                if($_SESSION['statut'] == 'Administrateur')
+                if(isset($_SESSION['statut']) && $_SESSION['statut'] == 'Administrateur')
                 {
                   ?>
                   <button type="button" class="btn btn-success"><a href="index.php?admin=adminHome">Interface Admin</a></button>
